@@ -1,9 +1,6 @@
 import numpy as np
-import torch
 import pandas as pd
 from torch.utils.data import Dataset
-import torchio as tio
-from torchvision import transforms
 
 class BrainDataset(Dataset):
     def __init__(self, annotation_file='', data_dir='', train=True):

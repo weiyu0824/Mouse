@@ -13,6 +13,7 @@ class CVAE(nn.Module):
                 num_label3,
                 latent_dim=128,
                 label_embed_dim=32,
+                beta=1,
                 device='cpu'):
         super().__init__()
 
@@ -20,6 +21,7 @@ class CVAE(nn.Module):
 
         self.latent_dim = latent_dim
         self.label_embed_dim = label_embed_dim
+        self.beta = beta
         self.device = device
 
         stride = 2
@@ -199,9 +201,9 @@ class CVAE(nn.Module):
         kl_loss = -0.5 * torch.sum(1 + logvar - mean.pow(2) - logvar.exp())
 
         # Compute the total loss
-        total_loss = recon_loss + kl_loss
+        total_loss = recon_loss + self.beta*kl_loss
 
-        return total_loss
+        return total_loss, recon_loss, kl_loss
 
 
 
