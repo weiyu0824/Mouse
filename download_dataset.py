@@ -14,7 +14,7 @@ TIMESTAMPS = ['P14', 'P56', 'P4', 'E18.5', 'E15.5', 'E13.5', 'E11.5']
 QUERY_FILE_PATH = 'query.csv'
 
 # Output file directories
-DATASET_DIR = '/data/wylin6/mouse/dataset/'
+DATASET_DIR = '/m-ent1/ent1/wylin6/mouse/dataset/'
 
 # URL helper func
 def get_xml_url(timestamp, gene_sym):
