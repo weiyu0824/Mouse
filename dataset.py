@@ -7,15 +7,10 @@ import torchvision.transforms as transforms
 import torch
 
 class BrainDataset(Dataset):
-    def __init__(self, annotation_file='', data_dir='', train=True, transform=None):
+    def __init__(self, annotation_file='', data_dir='', transform=None):
         self.annotations = pd.read_csv(annotation_file)
         self.data_dir = data_dir
         self.transform = transform
-
-        if train:
-            self.annotations = self.annotations.iloc[:800000]
-        else:
-            self.annotations = self.annotations.iloc[800000:]
 
     def __len__(self):
         return len(self.annotations)
