@@ -8,10 +8,10 @@ import urllib.request as urllibreq
 import xml.dom.minidom as xmldom
 from multiprocessing import Pool
 import time
+from config import QUERY_FILE_PATH, TIMESTAMPS
 
 # Setting 
-TIMESTAMPS = ['P14', 'P56', 'P4', 'E18.5', 'E15.5', 'E13.5', 'E11.5']
-QUERY_FILE_PATH = 'query.csv'
+query_file_path = QUERY_FILE_PATH
 
 # Output file directories
 DATASET_DIR = '/m-ent1/ent1/wylin6/mouse/dataset/'
@@ -96,7 +96,7 @@ def download_data(timestamp, dataset_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--dataset-dir', default=DATASET_DIR)
-    parser.add_argument('-q', '--query-file-path', default=QUERY_FILE_PATH)
+    parser.add_argument('-q', '--query-file-path', default=query_file_path)
     parser.add_argument('-t', '--num-thread', type=int, default=1)
     args = parser.parse_args()
 
